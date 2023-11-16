@@ -24,3 +24,5 @@ Bu program, AFAD (Afet ve Acil Durum Yönetimi Başkanlığı) API'sinden düzen
 
 afad doc: 
 https://deprem.afad.gov.tr/event-service
+![image](https://github.com/ibrahimacar220/TurkeyEarthquakeSmsSenderSln/assets/91982157/fb67386a-18d8-458c-a684-f798c88de717)
+
