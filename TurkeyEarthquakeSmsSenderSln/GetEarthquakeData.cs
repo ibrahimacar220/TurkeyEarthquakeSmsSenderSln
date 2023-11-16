@@ -27,46 +27,46 @@ namespace TurkeyEarthquakeSmsSenderSln
             {
                 try
                 {
-                    string _apiUrl = $"https://deprem.afad.gov.tr/apiv2/event/filter?minlat=36&maxlat=41&minlon=32&maxlon=39&start={DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss")}&end={DateTime.Now.AddHours(1).ToString("yyyy-MM-ddTHH:mm:ss")}&format=json&minmag=0&maxmag=7&magtype=ML";
+                    string _apiUrl = $"https://earthquake.afad.gov.tr/api/v1/event/filter?minlat=36&maxlat=41&minlon=32&maxlon=39&start={DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss")}&end={DateTime.Now.AddHours(1).ToString("yyyy-MM-ddTHH:mm:ss")}&format=json&minmag=0&maxmag=7&magtype=ML";
 
                     HttpResponseMessage response = await _client.GetAsync(_apiUrl);
 
-                    // Başarılı bir yanıt alındıysa devam et
+                    // Continue if a successful response is received
                     if (response.IsSuccessStatusCode)
                     {
-                        // API yanıtını JSON olarak oku
+                        // Read the API response as JSON
                         string apiResponse = await response.Content.ReadAsStringAsync();
 
-                        // Eğer mevcut ve önceki API yanıtları eşit değilse yeni veriyi kullanıcıya sun
+                        // If the current and previous API responses are not equal, present the new data to the user
                         if (apiResponse != _previousApiResponse)
                         {
                             _previousApiResponse = apiResponse;
                             List<Earthquake> earthquakes = JsonSerializer.Deserialize<List<Earthquake>>(apiResponse);
 
-                            // İşlenmiş veriyi kullanıcıya sun
+                            // Present processed data to the user
                             if (earthquakes != null)
                             {
                                 foreach (var earthquake in earthquakes)
                                 {
                                     Console.WriteLine($"Earthquake Information: {earthquake.location}, Magnitude: {earthquake.magnitude}, Date: {earthquake.date}");
                                     SendSms sendSms = new SendSms();
-                                    string alertMessage = $"{earthquake.location} ilimizde {earthquake.magnitude} büyüklüğünde bir deprem olmuştur. tarihi: {earthquake.date}";
+                                    string alertMessage = $"{earthquake.location} experienced an earthquake with a magnitude of {earthquake.magnitude} on {earthquake.date}.";
                                     sendSms.Send(alertMessage);
                                 }
                             }
                         }
 
-                        // Belirli bir süre bekleyerek tekrar istek gönder
-                        Thread.Sleep(6000); // Örnekte 6 saniye bekletildi, süreyi ihtiyacınıza göre ayarlayabilirsiniz
+                        // Wait for a specific period before sending another request
+                        Thread.Sleep(6000); // Delayed for 6 seconds in the example, adjust the time according to your needs
                     }
                     else
                     {
-                        Console.WriteLine($"API'den başarısız yanıt alındı. Durum kodu: {response.StatusCode}");
+                        Console.WriteLine($"Failed response from the API. Status code: {response.StatusCode}");
                     }
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"Bir hata oluştu: {ex.Message}");
+                    Console.WriteLine($"An error occurred: {ex.Message}");
                 }
             }
         }

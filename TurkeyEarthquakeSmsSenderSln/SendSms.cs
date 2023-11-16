@@ -11,11 +11,11 @@ namespace TurkeyEarthquakeSmsSenderSln
     {
         public async Task<int> Send(string message)
         {
-            string apiKey = ""; // bu kısma sms servisinizden aldığınız apiKeyi yazın
-            string hash = ""; // bu kısma sms servisinizden aldığınız apiKeyi yazın
-            string senderName = ""; // bu kısma sms servisinizdeki kullanıcı adınızı yazın
-            List<string> phoneNumbers = new List<string> { "" }; // bu kısma hangi telefon numaralarına sms  göndermek istediğiniz yazabilirsiniz.
-            string smsContent = "Bu bir deneme mesajıdır.";
+            string apiKey = ""; // Write the apiKey you received from our SMS service in this section."
+            string hash = ""; // Write the hash you received from our SMS service in this section."
+            string senderName = ""; // Write the Username you received from our SMS service in this section."
+            List<string> phoneNumbers = new List<string> { "" }; // You can write the phone numbers to which you want to send SMS messages in this section.
+            string smsContent = "this is a test message";
 
             string apiUrl = "https://api.iletimerkezi.com/v1/send-sms/json";
 
@@ -57,19 +57,19 @@ namespace TurkeyEarthquakeSmsSenderSln
 
                     if (response.IsSuccessStatusCode)
                     {
-                        Console.WriteLine("SMS başarıyla gönderildi.");
+                        Console.WriteLine("SMS sent successfully.");
                         return 1;
                     }
                     else
                     {
-                        Console.WriteLine($"SMS gönderme başarısız. HTTP hata kodu: {response.StatusCode}");
+                        Console.WriteLine($"Failed to send SMS. HTTP error code: {response.StatusCode}");
                         return 0;
                     }
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Bir hata oluştu: {ex.Message}");
+                Console.WriteLine($"An error occurred: {ex.Message}");
                 return 0;
             }
         }
