@@ -19,6 +19,6 @@ The SMS content is set to "hello" in this example. The program runs in a continu
 afad doc: 
 https://deprem.afad.gov.tr/event-service
 
-sms service doc: https://www.toplusmsapi.com/sms/gonder/json/
+sms service doc: https://www.toplusmsapi.com/en/sms/send/json/
 ![image](https://github.com/ibrahimacar220/TurkeyEarthquakeSmsSenderSln/assets/91982157/fb67386a-18d8-458c-a684-f798c88de717)
 
