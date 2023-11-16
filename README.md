@@ -1,6 +1,5 @@
 # TurkeyEarthquakeSmsSenderSln
- (ENG)
- 
+
  
 This program fetches earthquake data from the AFAD (Disaster and Emergency Management Authority) API at regular intervals and processes the information. 
 
