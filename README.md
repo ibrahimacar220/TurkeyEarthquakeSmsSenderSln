@@ -21,3 +21,6 @@ The program runs in a continuous loop, checking for new earthquake events at reg
 (TR)
 
 Bu program, AFAD (Afet ve Acil Durum Yönetimi Başkanlığı) API'sinden düzenli aralıklarla deprem verileri çeker ve bilgileri işler. Eğer yeni bir deprem olayı varsa, SMS bildirimi gönderir. Deprem verileri, konum, büyüklük ve tarih gibi detayları içerir. Program, deprem verilerini almak için asenkron HTTP istekleri kullanır ve API yanıtını bir Earthquake nesneleri listesine dönüştürmek için JSON serileştirmeyi kullanır. SendSms sınıfı, SMS bildirimleri gönderme mantığını yönetir. Bu örnek içinde Iletimerkezi API'sini kullanır ve kimlik doğrulaması için bir API anahtarı ve hash gerektirir. SMS içeriği bu örnekte "merhaba" olarak ayarlanmıştır. Program, sürekli bir döngü içinde çalışarak belirli aralıklarla yeni deprem olaylarını kontrol eder.
+
+afad doc: 
+https://deprem.afad.gov.tr/event-service
