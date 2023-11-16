@@ -16,13 +16,6 @@ The SMS content is set to "hello" in this example. The program runs in a continu
 
 
 
-(TR)
-
-Bu program, AFAD (Afet ve Acil Durum Yönetimi Başkanlığı) API'sinden düzenli aralıklarla deprem verilerini çeker ve işler. Kayseri ve çevresini ana merkez olarak alır, belirli bir coğrafi bölgedeki deprem olaylarını kontrol eder. Eğer yeni bir deprem olayı varsa, SMS bildirimi gönderir. Deprem verileri, konum, büyüklük ve tarih gibi detayları içerir. Program, deprem verilerini almak için asenkron HTTP istekleri kullanır ve API yanıtını Earthquake nesneleri listesine dönüştürmek için JSON serileştirmeyi kullanır. SendSms sınıfı, SMS bildirimleri gönderme mantığını yönetir. Bu örnekte, Iletimerkezi API'sini kullanır ve kimlik doğrulaması için bir API anahtarı ve hash gerektirir. SMS içeriği bu örnekte "merhaba" olarak ayarlanmıştır. Program, sürekli bir döngü içinde çalışarak belirli aralıklarla yeni deprem olaylarını kontrol eder ve kullanıcıya bilgi sunar.
-
-
-
-
 
 afad doc: 
 https://deprem.afad.gov.tr/event-service
