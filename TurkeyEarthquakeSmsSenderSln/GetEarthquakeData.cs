@@ -40,6 +40,7 @@ namespace TurkeyEarthquakeSmsSenderSln
                         // Eğer mevcut ve önceki API yanıtları eşit değilse yeni veriyi kullanıcıya sun
                         if (apiResponse != _previousApiResponse)
                         {
+                            _previousApiResponse = apiResponse;
                             List<Earthquake> earthquakes = JsonSerializer.Deserialize<List<Earthquake>>(apiResponse);
 
                             // İşlenmiş veriyi kullanıcıya sun
